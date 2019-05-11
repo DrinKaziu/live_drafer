@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
-import players from './seedPlayers';
+import React from 'react';
+import { connect } from 'react-redux';
 import Navbar from './components/Navbar.js';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      players: players
-    }
-  }
+function App(props) {
+  return (
+    <div>
+      <Navbar />
+      {props.players.map(player => <p>{player.fname} {player.lname} - {player.position}</p>)}
+    </div>
+  );
+}
 
-  
-  render() {
-    return (
-      <div>
-        <Navbar />
-        {this.state.players.map(player => <p>{player.fname} {player.lname} - {player.position}</p>)}
-      </div>
-    );
+const mapStateToProps = (state) => {
+  return {
+    players: state.players
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
