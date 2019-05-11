@@ -4,7 +4,7 @@ import players from './seedPlayers';
 function App() {
   return (
     <div>
-      {players.map(player => <p>{player.fname} {player.lname}</p>)}
+      {players.map(player => <p>{player.fname} {player.lname} - {player.position}</p>)}
     </div>
   );
 }
